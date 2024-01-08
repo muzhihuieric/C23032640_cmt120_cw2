@@ -1,0 +1,1703 @@
+2024-01-08 12:09:25,856 - blog - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 18, in index
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=per_page)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 496, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3244, in all
+    return list(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3425, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3440, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3418, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2289, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1555, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:09:26,652 - blog - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 110, in page_not_found
+    return render_template('errors/404.html'), 404
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 838, in update_template_context
+    context.update(func())
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 91, in make_template_context
+    admin = Admin.query.first()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3298, in first
+    ret = list(self[0:1])
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3076, in __getitem__
+    return list(res)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3425, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3440, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3418, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2289, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1555, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:23:27,348 - blog - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 18, in index
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=per_page)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 496, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3244, in all
+    return list(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3425, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3440, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3418, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2289, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1555, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:23:27,736 - blog - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 110, in page_not_found
+    return render_template('errors/404.html'), 404
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 838, in update_template_context
+    context.update(func())
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 91, in make_template_context
+    admin = Admin.query.first()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3298, in first
+    ret = list(self[0:1])
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3076, in __getitem__
+    return list(res)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3425, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3440, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3418, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2289, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1555, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:24:02,750 - blog - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 18, in index
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=per_page)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 496, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3244, in all
+    return list(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3425, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3440, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3418, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2289, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1555, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:24:03,198 - blog - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 110, in page_not_found
+    return render_template('errors/404.html'), 404
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 838, in update_template_context
+    context.update(func())
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 91, in make_template_context
+    admin = Admin.query.first()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3298, in first
+    ret = list(self[0:1])
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3076, in __getitem__
+    return list(res)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3425, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3440, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3418, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2289, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1555, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:26:15,091 - blog - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\_collections.py", line 1030, in __call__
+    return self.registry[key]
+KeyError: 25560
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 18, in index
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=per_page)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 519, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\scoping.py", line 78, in __call__
+    return self.registry()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\_collections.py", line 1032, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 3254, in __call__
+    return self.class_(**local_kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 138, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 937, in engine
+    return self.get_engine()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 956, in get_engine
+    return connector.get_engine()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 559, in get_engine
+    sa_url = make_url(uri)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\url.py", line 229, in make_url
+    return _parse_rfc1738_args(name_or_url)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\url.py", line 291, in _parse_rfc1738_args
+    "Could not parse rfc1738 URL from string '%s'" % name
+sqlalchemy.exc.ArgumentError: Could not parse rfc1738 URL from string 'C:\Users\nuzhi\PycharmProjects\blog\sqlite:////data.db'
+2024-01-08 12:26:15,433 - blog - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\_collections.py", line 1030, in __call__
+    return self.registry[key]
+KeyError: 13848
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 110, in page_not_found
+    return render_template('errors/404.html'), 404
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 838, in update_template_context
+    context.update(func())
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 91, in make_template_context
+    admin = Admin.query.first()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 519, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\scoping.py", line 78, in __call__
+    return self.registry()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\_collections.py", line 1032, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 3254, in __call__
+    return self.class_(**local_kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 138, in __init__
+    bind = options.pop('bind', None) or db.engine
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 937, in engine
+    return self.get_engine()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 956, in get_engine
+    return connector.get_engine()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 559, in get_engine
+    sa_url = make_url(uri)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\url.py", line 229, in make_url
+    return _parse_rfc1738_args(name_or_url)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\url.py", line 291, in _parse_rfc1738_args
+    "Could not parse rfc1738 URL from string '%s'" % name
+sqlalchemy.exc.ArgumentError: Could not parse rfc1738 URL from string 'C:\Users\nuzhi\PycharmProjects\blog\sqlite:////data.db'
+2024-01-08 12:27:14,725 - blog - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 18, in index
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=per_page)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 496, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3244, in all
+    return list(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3425, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3440, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3418, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2289, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1555, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:27:14,978 - blog - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlite3.OperationalError: unable to open database file
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 110, in page_not_found
+    return render_template('errors/404.html'), 404
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 838, in update_template_context
+    context.update(func())
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 91, in make_template_context
+    admin = Admin.query.first()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3298, in first
+    ret = list(self[0:1])
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3076, in __getitem__
+    return list(res)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3425, in _execute_and_instances
+    querycontext, self._connection_from_session, close_with_result=True
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3440, in _get_bind_args
+    mapper=self._bind_mapper(), clause=querycontext.statement, **kw
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3418, in _connection_from_session
+    conn = self.session.connection(**kw)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1133, in connection
+    execution_options=execution_options,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 1139, in _connection_for_bind
+    engine, execution_options
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\session.py", line 432, in _connection_for_bind
+    conn = bind._contextual_connect()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2251, in _contextual_connect
+    self._wrap_pool_connect(self.pool.connect, None),
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2289, in _wrap_pool_connect
+    e, dialect, self
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1555, in _handle_dbapi_exception_noconnection
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 2285, in _wrap_pool_connect
+    return fn()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 363, in connect
+    return _ConnectionFairy._checkout(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 773, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 492, in checkout
+    rec = pool._do_get()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\impl.py", line 238, in _do_get
+    return self._create_connection()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 308, in _create_connection
+    return _ConnectionRecord(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 437, in __init__
+    self.__connect(first_connect_check=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 657, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 69, in __exit__
+    exc_value, with_traceback=exc_tb,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\pool\base.py", line 652, in __connect
+    connection = pool._invoke_creator(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\strategies.py", line 114, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 488, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) unable to open database file
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:28:26,406 - blog - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: post
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 18, in index
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, per_page=per_page)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 496, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3244, in all
+    return list(self)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3428, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 984, in execute
+    return meth(self, multiparams, params)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1103, in _execute_clauseelement
+    distilled_params,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1288, in _execute_context
+    e, statement, parameters, cursor, context
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1482, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: post
+[SQL: SELECT post.id AS post_id, post.title AS post_title, post.body AS post_body, post.timestamp AS post_timestamp, post.can_comment AS post_can_comment, post.category_id AS post_category_id 
+FROM post ORDER BY post.timestamp DESC
+ LIMIT ? OFFSET ?]
+[parameters: (10, 0)]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 12:28:26,645 - blog - ERROR - Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\werkzeug\routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: admin
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1816, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1744, in handle_http_exception
+    return handler(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 110, in page_not_found
+    return render_template('errors/404.html'), 404
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\templating.py", line 136, in render_template
+    ctx.app.update_template_context(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 838, in update_template_context
+    context.update(func())
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\__init__.py", line 91, in make_template_context
+    admin = Admin.query.first()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3298, in first
+    ret = list(self[0:1])
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3076, in __getitem__
+    return list(res)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3403, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\orm\query.py", line 3428, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 984, in execute
+    return meth(self, multiparams, params)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\sql\elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1103, in _execute_clauseelement
+    distilled_params,
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1288, in _execute_context
+    e, statement, parameters, cursor, context
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1482, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\util\compat.py", line 178, in raise_
+    raise exception
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
+    cursor, statement, parameters, context
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\sqlalchemy\engine\default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: admin
+[SQL: SELECT admin.id AS admin_id, admin.username AS admin_username, admin.password_hash AS admin_password_hash, admin.blog_title AS admin_blog_title, admin.blog_sub_title AS admin_blog_sub_title, admin.name AS admin_name, admin.about AS admin_about 
+FROM admin
+ LIMIT ? OFFSET ?]
+[parameters: (1, 0)]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2024-01-08 20:13:07,641 - blog - ERROR - Exception on /post/38 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:28:43,334 - blog - ERROR - Exception on /post/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:28:47,249 - blog - ERROR - Exception on /post/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:28:53,903 - blog - ERROR - Exception on /post/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:28:57,026 - blog - ERROR - Exception on /post/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:29:07,180 - blog - ERROR - Exception on /post/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:29:20,765 - blog - ERROR - Exception on /post/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:29:25,908 - blog - ERROR - Exception on /post/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:30:34,366 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:30:40,981 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:31:24,313 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:33:40,344 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:34:10,969 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:34:16,257 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:34:49,056 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:38:44,720 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:39:56,949 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:41:43,805 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:31,293 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:33,966 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:39,199 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:41,539 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:42,199 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:42,450 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:42,705 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:46,598 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:48,892 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:56,048 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:42:59,332 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:47:38,560 - blog - ERROR - Exception on /post/3 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:47:50,223 - blog - ERROR - Exception on /post/3 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:51:29,250 - blog - ERROR - Exception on /post/4 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:53:18,427 - blog - ERROR - Exception on /post/4 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 20:56:33,279 - blog - ERROR - Exception on /post/5 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-08 21:04:18,374 - blog - ERROR - Exception on /post/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
