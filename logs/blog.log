@@ -1701,3 +1701,37 @@ Traceback (most recent call last):
   File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
     form.email.data = current_app.config['EMAIL']
 KeyError: 'EMAIL'
+2024-01-09 00:15:20,061 - blog - ERROR - Exception on /post/6 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
+2024-01-09 18:18:59,694 - blog - ERROR - Exception on /post/5 [GET]
+Traceback (most recent call last):
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\nuzhi\PycharmProjects\blog\.venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\nuzhi\PycharmProjects\blog\blog\blueprints\blog.py", line 50, in show_post
+    form.email.data = current_app.config['EMAIL']
+KeyError: 'EMAIL'
